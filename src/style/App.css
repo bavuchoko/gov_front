@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+body {
+    font-family: 'Inter', sans-serif;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    /*font-family: Roboto, "Helvetica Neue", sans-serif;*/
+    font-size: 12px;
+}
+#root{
+    height: 100%;
+    margin: 0;
+}
+
+:root {
+    --vh: 100%;
+    --hover-gray: #f1f3f5;;
+    --selected: #e5f4ff;;
+    --border: #e6e6e6;
+    --backgound: #f5f5f5;
+    --outline: #0d99ff;
+
+}
+.border-black{
+    border: 1px solid black;
+    background-color: white;
+}
+.horizontal-border{
+    border-bottom: 1px solid var(--border);
+}
+.no-drag {
+    user-select: none; /* 텍스트 선택 방지 */
+    -webkit-user-drag: none; /* 이미지 등 드래그 방지 */
+}
+.no-select {
+    user-select: none; /* 텍스트 선택 방지 */
+}
+.menu{
+    border-right: 1px solid var(--border);
+}
+.menu > div.menu-item{
+    padding: 0.75rem 0.5rem;
+}
+.menu > div.menu-item-deeper{
+    padding: 0.75rem 1rem;
+}
+.hover-background {
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+}
+.hover-background:hover{
+    border-radius: 4px;
+    background-color: var(--hover-gray);
+}
+.fit-content{
+    max-width: fit-content;
+}
+.nav-user{
+    display: flex;
+}
+.user-name-port{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #ce9c31;
+    text-align: center;
+    font-size: 10px;
+    color: #fff;
+    line-height: 25px;
+}
+.user-id{
+    font-size: 13px;
+    line-height: 25px;
+    margin: 0 10px;
+}
+.user-alarm{
+    margin: 5px 3px 3px;
+    width: 16px;
+    height: 16px;
+}
+
+.menu-search-input{
+    width: 100%;
+    background-color: var(--backgound);
+    border-radius: 7px;
+    padding: 6px;
+    font-size: 12px;
+    text-indent: 35px;
+}
+input:focus {
+    outline: 2px solid var(--outline); /* 빨간색 */
+}
+
+.line-height-17{
+    line-height: 17px;
+}
+.line-height-25{
+    line-height: 25px;
+}
+.line-height-26{
+    line-height: 26px;
+}
+.line-height-27{
+    line-height: 27px;
+}
+.line-height-30{
+    line-height: 30px;
+}
+.side-menu-sub{
+    background-color: var(--backgound);
+}
