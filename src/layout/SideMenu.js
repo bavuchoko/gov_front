@@ -37,7 +37,7 @@ function SideMenu({style, toggle}) {
                <input type={'text'} className={`menu-search-input `} placeholder={'Search...'} onChange={(e)=>{}} />
                <img  src={Magnifier}  className={`absolute top-[18px] left-[22px] w-[14px]`}alt="Alarm"  />
             </div>
-            <div className={`menu-item-deeper bg-[var(--selected)] `}>
+            <div className={`menu-item-deeper `}>
                 {/*<img src={Clock} className={`w-[15px] inline-block mr-3 mb-0.5`} />*/}
                 <img src={Pen} className={`w-[15px] inline-block mr-3 mb-0.5 bg-white rounded-full`} />
                 <p className={`inline-block`}>자산 운영관리</p>
@@ -53,20 +53,20 @@ function SideMenu({style, toggle}) {
                 </div>
             </div>
             <div className={`menu-item-deeper hover:bg-[var(--hover-gray)]`}>
-                <img src={Shield} className={`w-[15px] inline-block mr-3 mb-0.5 bg-white rounded-full`} />
+                <img src={Fork} className={`w-[15px] inline-block mr-3 mb-0.5 bg-white rounded-full`} />
                 예방관리
             </div>
-            <div className={`menu-item-deeper bg-[var(--hover-gray)]`}>
-                <ul className={`ml-[2.5rem]`}>
-                    <li>요청관리</li>
-                    <li>구성관리</li>
-                    <li>변경관리</li>
-                    <li>이벤트 관리</li>
-                    <li>서비스 수준 관리</li>
+            <div className={``}>
+                <ul className={`text-[11px]`}>
+                    <li className={`pl-[4rem] py-2 my-3 bg-[var(--selected)]`}>요청관리</li>
+                    <li className={`pl-[4rem] py-2 my-3`}>구성관리</li>
+                    <li className={`pl-[4rem] py-2 my-3`}>변경관리</li>
+                    <li className={`pl-[4rem] py-2 my-3`}>이벤트 관리</li>
+                    <li className={`pl-[4rem] py-2 my-3`}>서비스 수준 관리</li>
                 </ul>
             </div>
             <div className={`menu-item-deeper hover:bg-[var(--hover-gray)]`}>
-                <img src={Reply} className={`w-[15px] inline-block mr-3 mb-0.5 bg-white rounded-full`} />
+                <img src={Fork} className={`w-[15px] inline-block mr-3 mb-0.5 bg-white rounded-full`} />
                 대응관리
             </div>
             <div className={`menu-item-deeper hover:bg-[var(--hover-gray)]`}>
