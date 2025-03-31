@@ -1,14 +1,76 @@
 import React, {useState} from 'react';
 import {faArrowRight, faPlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Task from "../component/TaskComponent/Task";
+import Detail from "../component/TaskComponent/Detail";
 
-function Main(props) {
+function Main() {
     const [showIcons, setShowIcons] = useState(false);
+    const [detail, setDetail] = useState({});
+
+    const [data, setData] = useState({
+        id: 1,
+        title: "Task 1",
+        description:"현재 작업에 대한 상세설명",
+        createDate:"2025-01-02",
+        createdBy : {name:'등록자'},
+        procedures:[
+            {taskName:'접수'},
+            {taskName:'분류'},
+            {taskName:'검토'},
+            {taskName:'처리'},
+        ],
+        before: {
+            id: 2,
+            title: "Before Task",
+            description:"이전 작업의에 대한 상세 설병",
+            after: {id: 1},
+            before: {
+                id: 7,
+                title: "Before of before Task",
+                description:"이전 작업의 이전 작업에 대한 상세 설명",
+                after: {id: 1}
+            }
+        }
+        ,
+        after: {
+            id: 3,
+            title: "after Task",
+            before: {
+                id: 1,
+                title: "Before Task",
+                after: {id: 1}
+            },
+            after: {
+                id: 4,
+                title: "after of after Task",
+                isMovable: true,
+            },
+        }
+    });
 
     const handleAddTask = () => {
         setShowIcons(!showIcons);
     };
 
+    const getDetail = (detail) => {
+        setDetail(detail)
+    }
+
+    const renderTasks = (taskData, visited = new Set()) => {
+        if (!taskData || visited.has(taskData.id)) return null;
+
+        // 현재 노드를 방문한 것으로 표시
+        visited.add(taskData.id);
+
+        return (
+            <React.Fragment key={taskData.id}>
+                {taskData.before && renderTasks(taskData.before, visited)}
+                <Task data={taskData} onClick={getDetail} />
+                {taskData.after && renderTasks(taskData.after, visited)}
+            </React.Fragment>
+        );
+    };
     return (
         <>
             <div className={`w-full h-[8rem] bg-white fixed top-[4rem] border-b`}>
@@ -20,45 +82,12 @@ function Main(props) {
             <div className={`w-full flex-1 bg-[var(--backgound)] border-t flex pt-[8rem] pr-[3rem]`}>
                 <div className={`flex-1 grid grid-cols-4 gap-1 p-5 task-container`}>
 
-                    <div className={` h-[20rem]  task flex`}>
-                        <div className={`bg-white flex-1 shadow`}></div>
-                        <div className={`w-[3rem] text-center relative`}>
-                            <FontAwesomeIcon icon={faArrowRight} className={`absolute top-[calc(50%)] right-[8px] text-[11px]  text-white rounded-full bg-gray-600 p-2`}
-                            />
-                        </div>
-                    </div>
-
-                    <div className={` h-[20rem]  task flex`}>
-                        <div className={`bg-white flex-1 shadow`}></div>
-                        <div className={`w-[3rem] text-center relative`}>
-                            <FontAwesomeIcon icon={faArrowRight} className={`absolute top-[calc(50%)] right-[8px] text-[11px]  text-white rounded-full bg-gray-600 p-2`} />
-                        </div>
-                    </div>
-
-                    <div className={` h-[20rem]  task flex`}>
-                        <div className={`bg-white flex-1 shadow`}></div>
-                        <div className={`w-[3rem] text-center relative`}>
-                            <FontAwesomeIcon icon={faPlus} className={`absolute top-[calc(50%)] right-[8px] text-[11px] text-[var(--innerline)] rounded-full bg-[var(--outline)] p-2`}
-                                             onClick={handleAddTask}/>
-                            {showIcons &&
-                                [...Array(3)].map((_, index) => (
-                                    <div
-                                        key={index}
-                                        className="absolute w-10 h-10 bg-[var(--buble)] border shadow-2xl rounded-full"
-                                        style={{
-                                            top: `calc(50% + ${((index - 1) * 35 - 3)}px)`,
-                                            right: `-${17 + (index)%2 * 12}px`,
-                                            transform: showIcons ? 'translateY(0)' : 'translateY(20px)',
-                                            transition: 'top 0.3s ease-in-out, right 0.3s ease-in-out',
-                                        }}
-                                    />
-                                ))}
-
-                        </div>
-                    </div>
+                    {renderTasks(data)}
 
                 </div>
-                <div className={`bg-white ml-auto w-[30rem] mr-[-3rem]`}>a</div>
+                <div className={`bg-white ml-auto w-[30rem] mr-[-3rem]`}>
+                    <Detail detail={detail} />
+                </div>
             </div>
         </>
     );

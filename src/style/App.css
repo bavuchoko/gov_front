@@ -101,7 +101,9 @@ html, body {
     width: 16px;
     height: 16px;
 }
-
+.radius-b{
+    border-radius: 0 0 8px 8px;
+}
 .menu-search-input{
     width: 100%;
     background-color: var(--backgound);
@@ -118,6 +120,9 @@ input:focus {
 }
 .line-height-17{
     line-height: 17px;
+}
+.line-height-20{
+    line-height: 20px;
 }
 .line-height-25{
     line-height: 25px;
