@@ -6,7 +6,7 @@ import Detail from "../component/TaskComponent/Detail";
 
 function Main() {
     const [showIcons, setShowIcons] = useState(false);
-    const [detail, setDetail] = useState({});
+    const [detail, setDetail] = useState(undefined);
 
     const [data, setData] = useState({
         id: 1,
@@ -80,7 +80,7 @@ function Main() {
 
             </div>
             <div className={`w-full flex-1 bg-[var(--backgound)] border-t flex pt-[8rem] pr-[3rem]`}>
-                <div className={`flex-1 grid grid-cols-4 gap-1 p-5 task-container`}>
+                <div className={`flex-1 grid grid-cols-4 p-5 task-container`}>
 
                     {renderTasks(data)}
 
